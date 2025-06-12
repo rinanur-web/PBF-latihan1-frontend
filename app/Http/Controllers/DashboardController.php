@@ -11,9 +11,9 @@ class DashboardController extends Controller
         $dosens = Http::get('http://localhost:8080/dosen')->json();
         $mahasiswas = Http::get('http://localhost:8080/mahasiswa')->json();
 
-        $jumlahDosen = count($dosens);
-        $jumlahMahasiswa = count($mahasiswas);
+        $jumlahDosen = count($dosens ?? []);
+        $jumlahMahasiswa = count($mahasiswas ?? []);
 
-        return view('dashboard.index', compact('jumlahDosen', 'jumlahMahasiswa'));
+        return view('dashboard.dashboard', compact('jumlahDosen', 'jumlahMahasiswa'));
     }
 }

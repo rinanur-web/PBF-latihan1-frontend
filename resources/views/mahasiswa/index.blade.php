@@ -4,6 +4,8 @@
 <h2>Data Mahasiswa</h2>
 
 <a href="{{ url('/mahasiswa/tambah') }}" class="btn btn-primary mb-3">Tambah mahasiswa</a>
+<a href="{{ url('/mahasiswa/cetak') }}" target="_blank" class="btn btn-primary">Cetak PDF</a>
+
 
 <table class="table table-bordered">
     <thead>
@@ -13,6 +15,7 @@
             <th>Email</th>
             <th>Prodi</th>
             <th>Aksi</th>
+            <th>Cetak</th>
         </tr>
     </thead>
     <tbody>
@@ -29,7 +32,10 @@
     @method('DELETE')
     <button class="btn btn-danger btn-sm" onclick="return confirm('Yakin?')">Hapus</button>
 </form>
-            </td>
+            </td>           
+    <td>
+    <a href="{{ url('/mahasiswa/' . $mahasiswa['id'] . '/cetak') }}" target="_blank" class="btn btn-success btn-sm">Cetak</a>
+</td>
         </tr>
         @endforeach
     </tbody>

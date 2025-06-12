@@ -53,4 +53,13 @@ class DosenController extends Controller
         Http::delete("http://eval_pbf_frontend.test/dosen/{$id}");
         return redirect('/dosen')->with('success', 'Dosen berhasil dihapus');
     }
+
+    public function cetakSatuPDF($id)
+{
+    $response = Http::get("http://eval_pbf_frontend.test/dosen/{$id}");
+    $dosen = $response->json();
+    $pdf = \Barryvdh\DomPDF\Facade\Pdf::loadView('dosen.cetak_satu', compact('dosen'));
+    return $pdf->download("dosen-{$id}.pdf");
+}
+
 }

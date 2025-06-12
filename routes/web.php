@@ -20,6 +20,8 @@ use App\Http\Controllers\MahasiswaController;
 Route::get('/', function () {
     return view('dashboard.dashboard');});
 
+// Route::get('/', [DashboardController::class, 'index']);
+
 
 Route::get('/dosen', [DosenController::class, 'index']);
 Route::get('/dosen/tambah', [DosenController::class, 'create']);
@@ -27,6 +29,8 @@ Route::post('/dosen', [DosenController::class, 'store']);
 Route::get('/dosen/{id}/edit', [DosenController::class, 'edit']);
 Route::put('/dosen/{id}', [DosenController::class, 'update']);
 Route::delete('/dosen/{id}', [DosenController::class, 'destroy']);
+Route::get('/dosen/{id}/cetak', [DosenController::class, 'cetakSatuPDF'])->name('mahasiswa.cetak_satu');
+
 
 
 Route::get('/mahasiswa', [MahasiswaController::class, 'index']);
@@ -35,3 +39,6 @@ Route::post('/mahasiswa', [MahasiswaController::class, 'store']);
 Route::get('/mahasiswa/{id}/edit', [MahasiswaController::class, 'edit']);
 Route::put('/mahasiswa/{id}', [MahasiswaController::class, 'update']);
 Route::delete('/mahasiswa/{id}', [MahasiswaController::class, 'destroy']);
+Route::get('/mahasiswa/cetak', [MahasiswaController::class, 'cetakPDF'])->name('mahasiswa.cetak');
+Route::get('/mahasiswa/{id}/cetak', [MahasiswaController::class, 'cetakSatuPDF'])->name('mahasiswa.cetak_satu');
+
