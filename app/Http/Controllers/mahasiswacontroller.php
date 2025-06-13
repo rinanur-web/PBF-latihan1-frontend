@@ -59,7 +59,7 @@ class MahasiswaController extends Controller
 {
     $response = Http::get("http://eval_pbf_frontend.test/mahasiswa/{$id}");
     $mahasiswa = $response->json();
-    $pdf = \Barryvdh\DomPDF\Facade\Pdf::loadView('mahasiswa.cetak_satu', compact('mahasiswa'));
+    $pdf = Pdf::loadView('mahasiswa.cetak_satu', compact('mahasiswa'));
     return $pdf->download("mahasiswa-{$id}.pdf");
 }
 
